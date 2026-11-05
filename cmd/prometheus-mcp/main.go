@@ -178,6 +178,7 @@ func main() {
 	kingpin.Version(fmt.Sprintf("%s\n  docs commit:      %s\n", promversion.Print(programName), docsCommit))
 	kingpin.CommandLine.UsageWriter(os.Stdout)
 	kingpin.HelpFlag.Short('h')
+	kingpin.CommandLine.Name = programName
 	kingpin.CommandLine.DefaultEnvars()
 	kingpin.Parse()
 
