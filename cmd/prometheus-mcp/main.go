@@ -183,6 +183,10 @@ func main() {
 	kingpin.Version(fmt.Sprintf("%s\n  docs commit:      %s\n", promversion.Print(programName), docsCommit))
 	kingpin.CommandLine.UsageWriter(os.Stdout)
 	kingpin.HelpFlag.Short('h')
+	// Kingpin names the app after os.Args[0], and DefaultEnvars uses that
+	// name as the env var prefix. Set it explicitly so the Windows binary
+	// (prometheus-mcp.exe) reads PROMETHEUS_MCP_* and not PROMETHEUS_MCP_EXE_*.
+	kingpin.CommandLine.Name = programName
 	kingpin.CommandLine.DefaultEnvars()
 	kingpin.Parse()
 
