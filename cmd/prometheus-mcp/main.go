@@ -183,6 +183,8 @@ func main() {
 	kingpin.Version(fmt.Sprintf("%s\n  docs commit:      %s\n", promversion.Print(programName), docsCommit))
 	kingpin.CommandLine.UsageWriter(os.Stdout)
 	kingpin.HelpFlag.Short('h')
+	// Keep the environment prefix the same for prometheus-mcp.exe.
+	kingpin.CommandLine.Name = programName
 	kingpin.CommandLine.DefaultEnvars()
 	kingpin.Parse()
 
